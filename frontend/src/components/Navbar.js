@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <nav id="nav">
       <Link to="/">PostBeach</Link>
-      <form>
+      <form id="search-form">
         <BsSearch />
         <input type="text" placeholder="Pesquisar" />
       </form>
