@@ -2,7 +2,7 @@ import "./Auth.css";
 
 function Login() {
   return (
-    <div>
+    <div id="login">
       Login
     </div>
   )
