@@ -19,7 +19,6 @@
 }
 
 #search-form input {
-
   padding-left: 2.5em;
   border: none;
   border-radius: 5px;
@@ -36,7 +35,7 @@
   margin-right: 1em;
 }
 
-#nav0links span {
+#nav-links span {
   cursor: pointer;
 }
 
