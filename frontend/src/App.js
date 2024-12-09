@@ -1,22 +1,30 @@
 import './App.css';
 
-//Router
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+// Router
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Pages
 import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 
+// Components
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
