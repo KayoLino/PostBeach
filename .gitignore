@@ -1,0 +1,31 @@
+# Ignorar node_modules de ambos os diretórios
+frontend/node_modules/
+backend/node_modules/
+
+# Ignorar arquivos de configuração do ambiente
+backend/.env
+
+# Dependências
+/node_modules
+/.pnp
+.pnp.js
+
+# Testes
+/coverage
+
+# Build (produção)
+build
+
+# Arquivos do sistema
+.DS_Store
+
+# Arquivos de ambiente local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs de depuração
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
