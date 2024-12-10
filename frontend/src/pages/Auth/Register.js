@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 
 // Hooks
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+// Redux
+import { register, reset } from '../../slices/authSlice';
 
 function Register() {
 
@@ -13,6 +17,9 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const dispatch = useDispatch();
+
+  const { loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +33,14 @@ function Register() {
 
     console.log(user);
 
-  }
+    dispatch(register(user));
+  };
+
+  // Clean all auth states
+  useEffect(() => {
+    dispatch(reset())
+  }, [dispatch]);
+
   return (
     <div id="register">
       <h2>PostBeach</h2>
