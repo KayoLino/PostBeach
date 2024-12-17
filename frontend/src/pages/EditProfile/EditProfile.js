@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Redux
-import { profile, resetMessage } from '../../slices/userSlice';
+import { profile, resetMessage, updateProfile } from '../../slices/userSlice';
 
 // Components
 import Message from '../../components/Message';
@@ -40,8 +40,6 @@ function EditProfile() {
     }
   }, [user])
 
-  console.log(user);
-
   const handleFile = (e) => {
     // image preview 
     const image = e.target.files[0];
@@ -52,9 +50,34 @@ function EditProfile() {
     setImage(image);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const userData = {
+      name
+    }
+
+    if (profileImage) {
+      userData.profileImage = profileImage;
+    }
+
+    if (bio) {
+      userData.bio = bio;
+    }
+
+    if (password) {
+      userData.password = password;
+    }
+
+    const formData = new FormData();
+    Object.keys(userData).forEach((key) => formData.append(key, userData[key]));
+
+    // Envia o FormData diretamente
+    await dispatch(updateProfile(formData));
+
+    setTimeout(() => {
+      dispatch(resetMessage())
+    }, 2000);
   }
   return (
     <div id="edit-profile">
@@ -76,7 +99,7 @@ function EditProfile() {
         <input type="email" placeholder="E-mail" disabled value={email || ''} />
         <label >
           <span>Imagem do Perfil:</span>
-          <input type="file" onChange={(e) => handleFile(e)} />
+          <input type="file" onChange={handleFile} />
         </label>
         <label>
           <span>Bio:</span>
@@ -86,7 +109,10 @@ function EditProfile() {
           <span>Deseja mudar sua senha?</span>
           <input type="password" placeholder="Digite sua nova senha" onChange={e => setPassword(e.target.value)} value={password || ''} />
         </label>
-        <input type="submit" value="Atualizar" />
+        {!loading && <input type="submit" value="Atualizar" />}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
+        {error && <Message msg={error} type="error" />}
+        {message && <Message msg={message} type="success" />}
       </form>
 
     </div>
