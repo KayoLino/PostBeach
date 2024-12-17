@@ -40,6 +40,8 @@ function EditProfile() {
     }
   }, [user])
 
+  console.log(user);
+
   const handleFile = (e) => {
     // image preview 
     const image = e.target.files[0];
@@ -63,7 +65,7 @@ function EditProfile() {
         <img
           className="profile-image"
           src={
-            previewImage ? URL.createObjectURL(previewImage) : `$${uploads}/users/${user.profileImage}`
+            previewImage ? URL.createObjectURL(previewImage) : `${uploads}/users/${user.profileImage}`
           }
           alt={user.name}
         />
