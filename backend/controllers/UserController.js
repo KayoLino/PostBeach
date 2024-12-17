@@ -79,7 +79,6 @@ const login = async (req, res) => {
 // Get current logged in user
 const getCurrentUser = async (req, res) => {
   const user = req.user;
-  console.log(user);
   res.status(200).json(user);
 }
 
