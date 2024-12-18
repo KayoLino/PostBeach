@@ -37,9 +37,8 @@ function Profile() {
     <p>Carregando...</p>
   }
 
-
   return (
-    <div id="profile">
+    <div id="profile" className="profile-header">
       {user.profileImage && (
         <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
       )}
