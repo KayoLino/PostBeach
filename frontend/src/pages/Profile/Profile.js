@@ -14,7 +14,6 @@ import { useParams } from 'react-router-dom';
 
 // redux
 
-
 function Profile() {
   return (
     <div>
