@@ -3,7 +3,7 @@ import photoService from "../services/photoService";
 import { resetMessage } from './userSlice';
 
 const initialState = {
-  photos: {},
+  photos: [],
   photo: {},
   error: false,
   success: false,
