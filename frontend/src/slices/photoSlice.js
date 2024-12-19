@@ -99,7 +99,7 @@ export const photoSlice = createSlice({
         return photo._id !== action.payload.id;
       })
 
-      state.message = action.playload.message;
+      state.message = action.payload.message;
     }).addCase(deletePhoto.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;

@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom';
 
 // redux
 import { getUserDetails } from '../../slices/userSlice';
-import { getUserPhotos, publishPhoto, resetPhotoMessage } from '../../slices/photoSlice';
+import { deletePhoto, getUserPhotos, publishPhoto, resetPhotoMessage } from '../../slices/photoSlice';
 
 function Profile() {
 
@@ -39,6 +39,12 @@ function Profile() {
     setImage(image);
   }
 
+  const resetComponentMessage = () => {
+    setTimeout(() => {
+      dispatch(resetPhotoMessage())
+    }, 2000);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -55,9 +61,7 @@ function Profile() {
 
     setTitle("");
 
-    setTimeout(() => {
-      dispatch(resetPhotoMessage())
-    }, 2000);
+    resetComponentMessage();
 
   }
 
@@ -68,6 +72,15 @@ function Profile() {
     dispatch(getUserPhotos(id));
 
   }, [dispatch, id])
+
+  // Delete a photo
+  const handleDelete = (id) => {
+
+    dispatch(deletePhoto(id));
+
+    resetComponentMessage();
+
+  }
 
   if (loading) {
     <p>Carregando...</p>
@@ -117,7 +130,7 @@ function Profile() {
                 (<div className="actions">
                   <Link to={`/photos/${photo._id}`}><BsFillEyeFill /></Link>
                   <BsPencilFill />
-                  <BsXLg />
+                  <BsXLg onClick={() => handleDelete(photo._id)} />
                 </div>)
                 :
                 (<Link className="btn" to={`/photos/${photo._id}`}>Ver</Link>)}
