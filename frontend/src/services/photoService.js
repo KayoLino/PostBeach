@@ -120,9 +120,9 @@ const comment = async (data, id, token) => {
 }
 
 // Get all photos
-const getPhotos = async () => {
+const getPhotos = async (token) => {
 
-  const config = requestConfig("GET");
+  const config = requestConfig("GET", null, token);
 
   try {
 
