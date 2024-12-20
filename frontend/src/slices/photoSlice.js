@@ -101,9 +101,9 @@ export const like = createAsyncThunk(
 // Add comment to a photo
 export const comment = createAsyncThunk(
   "photo/comment",
-  async (photoData, thunkAPI) => {
+  async (commentData, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
-    const data = await photoService.comment({ comment: photoData.comment }, photoData.id, token);
+    const data = await photoService.comment({ comment: commentData.comment }, commentData.id, token);
 
     //Check for erros
     if (data.errors) {
