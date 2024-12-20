@@ -161,7 +161,7 @@ function Profile() {
             <form onSubmit={handleUpdate}>
               <input type="text" placeholder="Insira um novo título" onChange={e => setEditTitle(e.target.value)} value={editTitle || ""} />
               <input type="submit" value="Atualizar" />
-              <button className="cancel-btn" onClick={handleCancelEdit}>Cancelar edição</button>
+              <button type="button" className="cancel-btn" onClick={handleCancelEdit}>Cancelar edição</button>
             </form>
 
           </div>
