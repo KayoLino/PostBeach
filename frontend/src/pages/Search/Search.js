@@ -9,8 +9,10 @@ import { useResetComponentMessage } from '../../hooks/useResetComponentMessage';
 import LikeContainer from '../../components/LikeContainer';
 import PhotoItem from '../../components/PhotoItem';
 import { Link } from 'react-router-dom';
+import { useQuery } from '../../hooks/useQuery';
 
-//redux 
+// Redux
+
 
 function Search() {
   return (
